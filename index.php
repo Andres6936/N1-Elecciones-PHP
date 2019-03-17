@@ -6,29 +6,24 @@
          // connects to the database
          include_once __DIR__ . '/php/DatabaseConnection.php';
 
-         include_once __DIR__ . '/php/DatabaseTable.php';
+         include_once __DIR__ . '/php/classes/DatabaseTable.php';
+         include_once __DIR__ . '/php/controllers/ElectionsController.php';
 
          $candidateTable = new DatabaseTable($pdo, 'Candidatos', 'ID_CAND');
          $votingTable = new DatabaseTable($pdo, 'Votantes', 'ID_VOTA');
 
-         $result = $pdo->query('SELECT * FROM Candidatos');
+         $electionsController = new ElectionsController($candidateTable);
 
-         // Get the results of query and save in array.
-         while ($row = $result->fetch())
-         {
-             $nameCandidate[] = $row['NOM_CAND'];
-             $lastNameCandidate[] = $row['APEL_CAND'];
-             $politicalPartyCandidate[] = $row['PART_CAND'];
-             $ageCandidate[] = $row['EDAD_CAND'];
-             $costElectoralCampaignCandidate[] = $row['COST_CAND'];
-             $votesCandidate[] = $row['VOTO_CAND'];
-         }
+         $page = $electionsController->list();
 
-         ob_start();
+         $candidates = $page['candidates'];
 
-         include __DIR__ . '/html/Urna.php';
-
-         $output = ob_get_clean();
+         $nameCandidate[] = $candidates[0]['NOM_CAND'];
+         $lastNameCandidate[] = $candidates[0]['APEL_CAND'];
+         $politicalPartyCandidate[] = $candidates[0]['PART_CAND'];
+         $ageCandidate[] = $candidates[0]['EDAD_CAND'];
+         $costElectoralCampaignCandidate[] = $candidates[0]['COST_CAND'];
+         $votesCandidate[] = $candidates[0]['VOTO_CAND'];
      }
      catch (PDOException $exception)
      {
@@ -41,7 +36,4 @@
      }
 
      // This line is necessary to show page.
-     include __DIR__ . '/html/Urna.php';
-
-     // Disconnect from the database server.
-     $pdo = null;
+     include __DIR__ . '/html/Urn.php';
