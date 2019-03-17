@@ -1,0 +1,44 @@
+section
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section fieldset
+{
+    width: 30%;
+    float: left;
+    padding: 10px;
+}
+
+@media screen and (max-width: 600px)
+{
+    section fieldset
+    {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Buttons */
+
+.button-blue
+{
+    background-color: dodgerblue;
+    border: none;
+    color: white;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    padding: 12px 24px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button-blue:hover
+{
+    background-color: cornflowerblue;
+}
