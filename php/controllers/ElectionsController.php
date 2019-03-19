@@ -46,7 +46,7 @@ final class ElectionsController
     {
         ob_start();
 
-        include __DIR__ . '/../../Urn.php';
+        include __DIR__ . '/../../Urn.html.php';
 
         $output = ob_get_clean();
 
@@ -57,7 +57,7 @@ final class ElectionsController
     {
         ob_start();
 
-        include __DIR__ . '/../../html/Urn.php';
+        include __DIR__ . '/../../html/Urn.html.php';
 
         $output = ob_get_clean();
 
@@ -73,7 +73,7 @@ final class ElectionsController
     {
         ob_start();
 
-        include __DIR__ . '/../../html/Vote.php';
+        include __DIR__ . '/../../html/Vote.html';
 
         $output = ob_get_clean();
 

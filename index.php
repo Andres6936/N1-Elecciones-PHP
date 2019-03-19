@@ -7,6 +7,7 @@
          include_once __DIR__ . '/php/DatabaseConnection.php';
 
          include_once __DIR__ . '/html/Urn.php';
+
          include_once __DIR__ . '/php/classes/DatabaseTable.php';
          include_once __DIR__ . '/php/controllers/ElectionsController.php';
 
@@ -17,7 +18,6 @@
 
          $urn = Urn::getInstance();
          $urn->setCandidates($candidateTable);
-         $urn->showCandidate(0);
 
          if (isset($_GET['action']))
          {
@@ -28,16 +28,16 @@
              $action = 'home';
          }
 
-//         if ($action == 'vote')
-//         {
-//             $page = $electionsController->vote();
-//             echo $page['output'];
-//         }
-//         else
-//         {
-//             $page = $electionsController->list();
-//             echo $page['output'];
-//         }
+         if ($action == 'vote')
+         {
+             $page = $electionsController->vote();
+             echo $page['output'];
+         }
+         else
+         {
+             $page = $electionsController->list();
+             echo $page['output'];
+         }
      }
      catch (PDOException $exception)
      {
