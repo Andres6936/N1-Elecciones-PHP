@@ -6,24 +6,38 @@
          // connects to the database
          include_once __DIR__ . '/php/DatabaseConnection.php';
 
+         include_once __DIR__ . '/html/Urn.php';
          include_once __DIR__ . '/php/classes/DatabaseTable.php';
          include_once __DIR__ . '/php/controllers/ElectionsController.php';
 
          $candidateTable = new DatabaseTable($pdo, 'Candidatos', 'ID_CAND');
          $votingTable = new DatabaseTable($pdo, 'Votantes', 'ID_VOTA');
 
-         $electionsController = new ElectionsController($candidateTable);
+         $electionsController = ElectionsController::getInstance();
 
-         $page = $electionsController->list();
+         $urn = Urn::getInstance();
+         $urn->setCandidates($candidateTable);
+         $urn->showCandidate(0);
 
-         $candidates = $page['candidates'];
+         if (isset($_GET['action']))
+         {
+             $action = $_GET['action'];
+         }
+         else
+         {
+             $action = 'home';
+         }
 
-         $nameCandidate[] = $candidates[0]['NOM_CAND'];
-         $lastNameCandidate[] = $candidates[0]['APEL_CAND'];
-         $politicalPartyCandidate[] = $candidates[0]['PART_CAND'];
-         $ageCandidate[] = $candidates[0]['EDAD_CAND'];
-         $costElectoralCampaignCandidate[] = $candidates[0]['COST_CAND'];
-         $votesCandidate[] = $candidates[0]['VOTO_CAND'];
+//         if ($action == 'vote')
+//         {
+//             $page = $electionsController->vote();
+//             echo $page['output'];
+//         }
+//         else
+//         {
+//             $page = $electionsController->list();
+//             echo $page['output'];
+//         }
      }
      catch (PDOException $exception)
      {
@@ -34,6 +48,3 @@
          echo '<p>Line: ' . $exception->getLine() . '</p>';
 
      }
-
-     // This line is necessary to show page.
-     include __DIR__ . '/html/Urn.php';

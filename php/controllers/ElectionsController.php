@@ -1,54 +1,82 @@
 <?php
 
-class ElectionsController
+/**
+ * Singleton Class.
+ * This class cannot be extended.
+ */
+final class ElectionsController
 {
     // Fields
 
-    private $candidateTable;
+    /**
+     * @var ElectionsController Hold the class instance.
+     */
+    private static $instance = null;
 
     // Constructs
 
-    public function __construct(DatabaseTable $candidateTable)
+    /**
+     * The constructor is private to prevent initiation
+     * with outer code.
+     */
+    private function __construct()
     {
-        $this->candidateTable = $candidateTable;
+
+    }
+
+    // Methods Static
+
+    /**
+     * The object is created from within the class itself
+     * only if the class has no instance.
+     */
+    public static function getInstance()
+    {
+        if (self::$instance == null)
+        {
+            self::$instance = new ElectionsController();
+        }
+
+        return self::$instance;
     }
 
     // Methods
 
     public function home()
     {
+        ob_start();
 
+        include __DIR__ . '/../../Urn.php';
+
+        $output = ob_get_clean();
+
+        return ['output' => $output];
     }
 
     public function list()
     {
-        $result = $this->candidateTable->findAll();
-
-        $candidates = [];
-        foreach ($result as $candidate)
-        {
-            $candidates[] = [
-                'ID_CAND' => $candidate['ID_CAND'],
-                'NOM_CAND' => $candidate['NOM_CAND'],
-                'APEL_CAND' => $candidate['APEL_CAND'],
-                'PART_CAND' => $candidate['PART_CAND'],
-                'EDAD_CAND' => $candidate['EDAD_CAND'],
-                'COST_CAND' => $candidate['COST_CAND'],
-                'VOTO_CAND' => $candidate['VOTO_CAND']
-            ];
-        }
-
         ob_start();
 
-        include __DIR__ . '/html/Urn.php';
+        include __DIR__ . '/../../html/Urn.php';
 
         $output = ob_get_clean();
 
-        return ['output' => $output, 'candidates' => $candidates];
+        return ['output' => $output];
     }
 
     public function edit()
     {
 
+    }
+
+    public function vote()
+    {
+        ob_start();
+
+        include __DIR__ . '/../../html/Vote.php';
+
+        $output = ob_get_clean();
+
+        return ['output' => $output];
     }
 }
