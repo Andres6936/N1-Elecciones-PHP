@@ -10,6 +10,9 @@ section fieldset
     width: 30%;
     float: left;
     padding: 10px;
+
+    border: 1px solid #CCC;
+    border-radius: 1em;
 }
 
 @media screen and (max-width: 600px)
@@ -27,6 +30,7 @@ section fieldset
 {
     background-color: dodgerblue;
     border: none;
+    border-radius: 1em;
     color: white;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;

@@ -74,7 +74,9 @@ class DatabaseTable
 
         $fields = $this->processDates($fields);
 
-        $this->query($query, $fields);
+        // TODO: Delete
+        echo $query;
+        //$this->query($query, $fields);
     }
 
     private function update($fields)

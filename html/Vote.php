@@ -1,29 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Voting</title>
-</head>
-<body>
+<?php
 
-    <form action="" method="post">
-        <fieldset>
-            <legend>Información Personal</legend>
+/**
+ * Singleton Class.
+ * This class cannot be extended.
+ */
+final class Vote
+{
+    // Fields
 
-            <label> First Name:
-                <input type="text" name="first-name" required><br>
-            </label>
-            <label> Last Name:
-                <input type="text" name="last-name" required><br>
-            </label>
-        </fieldset>
+    /**
+     * @var Vote Hold the class instance.
+     */
+    private static $instance = null;
 
-        <!-- ... -->
+    // Construct
 
-        <button type="submit">
-            Send
-        </button>
-    </form>
+    /**
+     * The constructor is private to prevent initiation
+     * with outer code.
+     */
+    private function __construct()
+    {
 
-</body>
-</html>
+    }
+
+    // Method Static
+
+    /**
+     * The object is created from within the class itself
+     * only if the class has no instance.
+     */
+    public static function getInstance()
+    {
+        if (self::$instance == null)
+        {
+            self::$instance = new Vote();
+        }
+
+        return self::$instance;
+    }
+
+    // Method
+
+    public function processVoteForm($form)
+    {
+        $firstName = $form['first-name'];
+        $lastName = $form['last-name'];
+        $candidate = $form['candidate'];
+
+        $electionController = ElectionsController::getInstance();
+
+        $votersCandidate = $electionController->getVotersTable();
+        $votersCandidate->save(['ID_VOTA' => '',
+            'NOM_VOTA' => $firstName, 'APEL_VOTA' => $lastName]);
+    }
+}

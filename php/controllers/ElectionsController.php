@@ -13,6 +13,16 @@ final class ElectionsController
      */
     private static $instance = null;
 
+    /**
+     * @var DatabaseTable Hold the table of candidates.
+     */
+    private $candidateTable = null;
+
+    /**
+     * @var DatabaseTable Hold the table of voters.
+     */
+    private $votersTable = null;
+
     // Constructs
 
     /**
@@ -42,11 +52,31 @@ final class ElectionsController
 
     // Methods
 
+    public function setCandidatesTable(DatabaseTable $candidatesTable)
+    {
+        $this->candidateTable = $candidatesTable;
+    }
+
+    public function getCandidatesTable()
+    {
+        return $this->candidateTable;
+    }
+
+    public function setVotersTable(DatabaseTable $votersTable)
+    {
+        $this->votersTable = $votersTable;
+    }
+
+    public function getVotersTable()
+    {
+        return $this->votersTable;
+    }
+
     public function home()
     {
         ob_start();
 
-        include __DIR__ . '/../../Urn.html.php';
+        include __DIR__ . '/../../html/Urn.html.php';
 
         $output = ob_get_clean();
 
@@ -73,7 +103,7 @@ final class ElectionsController
     {
         ob_start();
 
-        include __DIR__ . '/../../html/Vote.html';
+        include __DIR__ . '/../../html/Vote.html.php';
 
         $output = ob_get_clean();
 

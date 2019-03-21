@@ -17,7 +17,7 @@ final class Urn
     /**
      * @var DatabaseTable Table of candidates.
      */
-    private $candidates;
+    private $candidatesTable;
 
     // Construct
 
@@ -48,14 +48,14 @@ final class Urn
 
     // Method
 
-    public function setCandidates(DatabaseTable $candidatesTable)
+    public function setCandidatesTable(DatabaseTable $candidatesTable)
     {
-        $this->candidates = $candidatesTable;
+        $this->candidatesTable = $candidatesTable;
     }
 
     public function showCandidate(int $numCandidate)
     {
-        $resultObj = $this->candidates;
+        $resultObj = $this->candidatesTable;
 
         $result = $resultObj->findAll();
 
