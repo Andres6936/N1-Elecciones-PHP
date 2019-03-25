@@ -50,8 +50,39 @@ final class Vote
 
         $electionController = ElectionsController::getInstance();
 
+        $candidateTable = $electionController->getCandidatesTable();
+
+        if($candidate == 'candidate-first')
+        {
+            $idCandidate = 1;
+            $candidateTable->update(['VOTO_CAND' => 1], 1);
+        }
+        else if($candidate == 'candidate-second')
+        {
+            $idCandidate = 2;
+            $candidateTable->update(['VOTO_CAND' => 1], 2);
+        }
+        else if($candidate == 'candidate-third')
+        {
+            $idCandidate = 3;
+            $candidateTable->update(['VOTO_CAND' => 1], 3);
+        }
+        else if($candidate == 'blank-vote')
+        {
+            //TODO: Document this convention
+            //Zero for blank vote
+            $idCandidate = 0;
+        }
+        else
+        {
+            //TODO: Document this convention
+            //Zero for blank vote
+            $idCandidate = 0;
+        }
+
         $votersCandidate = $electionController->getVotersTable();
-        $votersCandidate->save(['ID_VOTA' => '',
-            'NOM_VOTA' => $firstName, 'APEL_VOTA' => $lastName]);
+        $votersCandidate->insert(['ID_VOTA' => '',
+            'NOM_VOTA' => $firstName, 'APEL_VOTA' => $lastName,
+            'ID_CAND' => $idCandidate]);
     }
 }

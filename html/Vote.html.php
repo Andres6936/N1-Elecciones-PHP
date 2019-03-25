@@ -37,9 +37,9 @@
             <input type="radio" id="input-candidate-third"
                    name="candidate" value="candidate-third">
 
-            <label for="vote-blank">Voto Blanco</label>
-            <input type="radio" id="vote-blank"
-                   name="candidate" value="vote-blank" checked>
+            <label for="blank-vote">Voto Blanco</label>
+            <input type="radio" id="blank-vote"
+                   name="candidate" value="blank-vote" checked>
         </div>
 
         <!-- ... -->

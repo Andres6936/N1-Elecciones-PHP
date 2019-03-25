@@ -50,8 +50,13 @@ class DatabaseTable
         return $query->fetch();
     }
 
-    private function insert($fields)
+    public function insert($fields)
     {
+        if ($fields[$this->primaryKey] == '')
+        {
+            $fields[$this->primaryKey] = null;
+        }
+
         $query = 'INSERT INTO ' . $this->table . ' (';
 
         foreach ($fields as $key => $value)
@@ -74,12 +79,10 @@ class DatabaseTable
 
         $fields = $this->processDates($fields);
 
-        // TODO: Delete
-        echo $query;
-        //$this->query($query, $fields);
+        $this->query($query, $fields);
     }
 
-    private function update($fields)
+    public function update($fields, $valueKey)
     {
         $query = ' UPDATE ' . $this->table . ' SET ';
 
@@ -93,13 +96,17 @@ class DatabaseTable
         $query .= ' WHERE ' . $this->primaryKey . ' = :primaryKey';
 
         // Set the :primaryKey variable
-        $fields['primaryKey'] = $fields['id'];
+        $fields['primaryKey'] = $valueKey;
 
         $fields = $this->processDates($fields);
 
         $this->query($query, $fields);
     }
 
+    /**
+     * Delete a register with a specific ID from the database.
+     * @param $id int Value of Primary Key register.
+     */
     public function delete($id)
     {
         $parameters = [':id' => $id];
@@ -126,22 +133,5 @@ class DatabaseTable
         }
 
         return $fields;
-    }
-
-    public function save($record)
-    {
-        try
-        {
-            if ($record[$this->primaryKey] == '')
-            {
-                $record[$this->primaryKey] = null;
-            }
-
-            $this->insert($record);
-        }
-        catch (PDOException $e)
-        {
-            $this->update($record);
-        }
     }
 }
