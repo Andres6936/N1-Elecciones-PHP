@@ -104,8 +104,31 @@ class DatabaseTable
     }
 
     /**
+     * Increases the value of an existing record by
+     * the value passed by the parameter.
+     * @param $fields array Column of table.
+     * @param $primaryKey int Value of the primary registry key
+     * @param $valueBy int Value of increment.
+     */
+    public function incrementBy($fields, $primaryKey, $valueBy)
+    {
+        $query = ' UPDATE ' . $this->table . ' SET ';
+
+        foreach ($fields as $key)
+        {
+            $query .= $key . ' = ' . $key . ' + ' . $valueBy . ',';
+        }
+
+        $query = rtrim($query, ',');
+
+        $query .= ' WHERE ' . $this->primaryKey . ' = ' . $primaryKey;
+
+        $this->query($query);
+    }
+
+    /**
      * Delete a register with a specific ID from the database.
-     * @param $id int Value of Primary Key register.
+     * @param $id int Value of the primary registry key
      */
     public function delete($id)
     {

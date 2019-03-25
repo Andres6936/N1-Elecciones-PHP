@@ -55,17 +55,17 @@ final class Vote
         if($candidate == 'candidate-first')
         {
             $idCandidate = 1;
-            $candidateTable->update(['VOTO_CAND' => 1], 1);
+            $candidateTable->incrementBy(['VOTO_CAND'], 1, 1);
         }
         else if($candidate == 'candidate-second')
         {
             $idCandidate = 2;
-            $candidateTable->update(['VOTO_CAND' => 1], 2);
+            $candidateTable->incrementBy(['VOTO_CAND'], 2, 1);
         }
         else if($candidate == 'candidate-third')
         {
             $idCandidate = 3;
-            $candidateTable->update(['VOTO_CAND' => 1], 3);
+            $candidateTable->incrementBy(['VOTO_CAND'], 3, 1);
         }
         else if($candidate == 'blank-vote')
         {
