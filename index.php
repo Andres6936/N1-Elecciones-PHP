@@ -9,8 +9,8 @@
          include_once __DIR__ . '/php/classes/DatabaseTable.php';
          include_once __DIR__ . '/php/controllers/ElectionsController.php';
 
-         include_once __DIR__ . '/html/Urn.php';
-         include_once __DIR__ . '/html/Vote.php';
+         include_once __DIR__ . '/php/classes/Urn.php';
+         include_once __DIR__ . '/php/classes/Vote.php';
 
          $candidatesTable = new DatabaseTable($pdo, 'Candidatos', 'ID_CAND');
          $votersTable = new DatabaseTable($pdo, 'Votantes', 'ID_VOTA');
