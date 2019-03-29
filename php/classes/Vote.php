@@ -47,6 +47,7 @@ final class Vote
         $firstName = $form['first-name'];
         $lastName = $form['last-name'];
         $candidate = $form['candidate'];
+        $influence = $form['influence'];
 
         $electionController = ElectionsController::getInstance();
 
@@ -56,16 +57,19 @@ final class Vote
         {
             $idCandidate = 1;
             $candidateTable->incrementBy(['VOTO_CAND'], 1, 1);
+            $this->processInfluenceVote($candidateTable, $idCandidate, $influence);
         }
         else if($candidate == 'candidate-second')
         {
             $idCandidate = 2;
             $candidateTable->incrementBy(['VOTO_CAND'], 2, 1);
+            $this->processInfluenceVote($candidateTable, $idCandidate, $influence);
         }
         else if($candidate == 'candidate-third')
         {
             $idCandidate = 3;
             $candidateTable->incrementBy(['VOTO_CAND'], 3, 1);
+            $this->processInfluenceVote($candidateTable, $idCandidate, $influence);
         }
         else if($candidate == 'blank-vote')
         {
@@ -84,5 +88,34 @@ final class Vote
         $votersCandidate->insert(['ID_VOTA' => '',
             'NOM_VOTA' => $firstName, 'APEL_VOTA' => $lastName,
             'ID_CAND' => $idCandidate]);
+    }
+
+    /**
+     * Processes the influence of the vote according to the requirements,
+     * increasing the campaign cost of the chosen candidate.
+     * @param DatabaseTable $candidate Table Candidate.
+     * @param int $primaryKey Value of the primary register key.
+     * @param string $influence Influence of the vote.
+     */
+    public function processInfluenceVote(DatabaseTable $candidate,
+                                         int $primaryKey, string $influence)
+    {
+        if($influence == 'television')
+        {
+            $candidate->incrementBy(['COST_CAND'], $primaryKey, 1000);
+        }
+        else if($influence == 'radio')
+        {
+            $candidate->incrementBy(['COST_CAND'], $primaryKey, 500);
+        }
+        else if($influence == 'internet')
+        {
+            $candidate->incrementBy(['COST_CAND'], $primaryKey, 100);
+        }
+        else
+        {
+            //TODO: Throw Exception
+            echo '<p>Error</p>';
+        }
     }
 }

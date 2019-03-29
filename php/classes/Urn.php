@@ -80,4 +80,14 @@ final class Urn
         echo '<p>Costo Campaña:' . $candidates[$numCandidate]['COST_CAND'] . '</p>';
         echo '<p>Número de Votos:' . $candidates[$numCandidate]['VOTO_CAND'] . '</p>';
     }
+
+    public function showAverageVotes()
+    {
+
+    }
+
+    public function showTotalCampaignCost()
+    {
+
+    }
 }
