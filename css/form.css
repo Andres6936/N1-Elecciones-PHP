@@ -44,9 +44,24 @@ input
     border-radius: 3px;
 }
 
-button
+
+button[type="submit"]
 {
-    /* This extra margin represent roughly the same space as
-    the space between the labels and their text fields*/
-    margin-left: .5em;
+    background-color: dodgerblue;
+    border: none;
+    border-radius: 1em;
+    color: white;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover
+{
+    background-color: cornflowerblue;
 }
