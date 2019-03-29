@@ -40,6 +40,11 @@ class DatabaseTable
         return $row[0];
     }
 
+    /**
+     * Find a single record from any table using the primary key.
+     * @param $value mixed Value of the primary registry key
+     * @return mixed Record from any table.
+     */
     public function findById($value)
     {
         $query = 'SELECT * FROM ' . $this->table . ' WHERE '
@@ -107,7 +112,7 @@ class DatabaseTable
      * Increases the value of an existing record by
      * the value passed by the parameter.
      * @param $fields array Column of table.
-     * @param $primaryKey int Value of the primary registry key
+     * @param $primaryKey mixed Value of the primary registry key
      * @param $valueBy int Value of increment.
      */
     public function incrementBy($fields, $primaryKey, $valueBy)
@@ -128,7 +133,7 @@ class DatabaseTable
 
     /**
      * Delete a register with a specific ID from the database.
-     * @param $id int Value of the primary registry key
+     * @param $id mixed Value of the primary registry key
      */
     public function delete($id)
     {

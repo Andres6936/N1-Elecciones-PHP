@@ -15,6 +15,27 @@ section fieldset
     border-radius: 1em;
 }
 
+#section-totals fieldset
+{
+    width: 95%;
+}
+
+#section-options fieldset
+{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 95%;
+}
+
+#section-options fieldset button
+{
+    width: 33%;
+    margin-left: 5px;
+}
+
+/* Responsive */
+
 @media screen and (max-width: 600px)
 {
     section fieldset
