@@ -28,13 +28,10 @@
 
             $urn = Urn::getInstance();
             $urn->showCandidate(0);
+            $urn->showButtonAverageAndVote()
 
             ?>
 
-            <button type="button" class="button-blue">Porcetaje Votos</button>
-            <br><br>
-            <button onclick="location.href='index.php?action=vote'"
-                    type="button" class="button-blue">Votar</button>
         </fieldset>
         <fieldset id="div-second-candidate">
             <legend>Candidato 2</legend>
@@ -45,13 +42,10 @@
 
             $urn = Urn::getInstance();
             $urn->showCandidate(1);
+            $urn->showButtonAverageAndVote()
 
             ?>
 
-            <button type="button" class="button-blue">Porcetaje Votos</button>
-            <br><br>
-            <button onclick="location.href='index.php?action=vote'"
-                    type="button" class="button-blue">Votar</button>
         </fieldset>
         <fieldset id="div-third-candidate">
             <legend>Candidato 3</legend>
@@ -62,13 +56,10 @@
 
             $urn = Urn::getInstance();
             $urn->showCandidate(2);
+            $urn->showButtonAverageAndVote()
 
             ?>
 
-            <button type="button" class="button-blue">Porcetaje Votos</button>
-            <br><br>
-            <button onclick="location.href='index.php?action=vote'"
-                    type="button" class="button-blue">Votar</button>
         </fieldset>
     </section>
 
@@ -85,7 +76,7 @@
         <fieldset>
             <legend>Opciones</legend>
 
-            <button type="button" class="button-blue">Vaciar Urna</button>
+            <button type="button" class="button-red">Vaciar Urna</button>
             <button type="button" class="button-blue">Opción 1</button>
             <button type="button" class="button-blue">Opción 2</button>
         </fieldset>

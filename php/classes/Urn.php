@@ -81,6 +81,14 @@ final class Urn
         echo '<p>Número de Votos:' . $candidates[$numCandidate]['VOTO_CAND'] . '</p>';
     }
 
+    public function showButtonAverageAndVote()
+    {
+        echo '<button type="button" class="button-blue">Porcetaje Votos</button>';
+        echo '<br><br>';
+        echo '<button onclick="location.href=\'index.php?action=vote\'"
+                type="button" class="button-blue">Votar</button>';
+    }
+
     public function showAverageVotes()
     {
 
