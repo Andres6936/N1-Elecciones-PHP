@@ -17,7 +17,8 @@ section
 
 section fieldset
 {
-    max-width: 200px;
+    width: 100%;
+    max-width: 185px;
     float: left;
 
     border: 1px solid #CCC;
@@ -27,7 +28,7 @@ section fieldset
 #section-totals fieldset
 {
     width: 100%;
-    max-width: 570px;
+    max-width: 600px;
 }
 
 #section-options fieldset
@@ -36,7 +37,7 @@ section fieldset
     align-content: center;
     justify-content: center;
     width: 100%;
-    max-width: 570px;
+    max-width: 600px;
 }
 
 #section-options fieldset button
