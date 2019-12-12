@@ -58,6 +58,7 @@ final class Urn
         $resultObject = $this->candidatesTable;
 
         $candidateFrank = $resultObject->getCandidateFrank();
+        echo '<img src="images/Francis.jpg" alt="Obama" width="160" height="200" class="center">';
         $this->showInformation($candidateFrank);
     }
     
@@ -66,6 +67,7 @@ final class Urn
         $resultObject = $this->candidatesTable;
 
         $candidateClaire = $resultObject->getCandidateClaire();
+        echo '<img src="images/Claire.jpg" alt="Obama" width="160" height="200" class="center">';
         $this->showInformation($candidateClaire);
     }
     
@@ -74,17 +76,19 @@ final class Urn
         $resultObject = $this->candidatesTable;
 
         $candidateObama = $resultObject->getCandidateObama();
+
+        echo '<img src="images/Obama.jpg" alt="Obama" width="160" height="200" class="center">';
         $this->showInformation($candidateObama);
     }
 
     private function showInformation($candidate)
     {
-        echo '<p>Nombre:' . $candidate['NOM_CAND'] . '</p>';
-        echo '<p>Apellido:' . $candidate['APEL_CAND'] . '</p>';
-        echo '<p>Edad:' . $candidate['EDAD_CAND'] . '</p>';
-        echo '<p>Partido Político: <br>' . $candidate['PART_CAND'] . '</p>';
-        echo '<p>Costo Campaña:' . $candidate['COST_CAND'] . '</p>';
-        echo '<p>Número de Votos:' . $candidate['VOTO_CAND'] . '</p>';
+        echo '<p>Name:' . $candidate['NOM_CAND'] . '</p>';
+        echo '<p>Last Name:' . $candidate['APEL_CAND'] . '</p>';
+        echo '<p>Age:' . $candidate['EDAD_CAND'] . '</p>';
+        echo '<p>Political Party: <br>' . $candidate['PART_CAND'] . '</p>';
+        echo '<p>Cost Campaign:' . $candidate['COST_CAND'] . '</p>';
+        echo '<p>N° of Votes:' . $candidate['VOTO_CAND'] . '</p>';
     }
     
     public function showButtonAverageAndVote()

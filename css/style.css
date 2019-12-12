@@ -27,6 +27,13 @@ section fieldset
     border-radius: 1em;
 }
 
+/* Center all images of candidates */
+img.center
+{
+    display: block;
+    margin: auto;
+}
+
 #section-totals fieldset
 {
     width: 100%;
