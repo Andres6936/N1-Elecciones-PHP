@@ -150,6 +150,24 @@ class DatabaseTable
         return $result->fetchAll();
     }
 
+    public function getCandidateFrank()
+    {
+        // The Candidate Frank is ID = 1;
+        return $this->findById(1);
+    }
+
+    public function getCandidateClaire()
+    {
+        // The Candidate Claire is ID = 2;
+        return $this->findById(2);
+    }
+
+    public function getCandidateObama()
+    {
+        // The Candidate Obama is ID = 3;
+        return $this->findById(3);
+    }
+
     private function processDates($fields)
     {
         foreach ($fields as $key => $value)

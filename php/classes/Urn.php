@@ -53,34 +53,40 @@ final class Urn
         $this->candidatesTable = $candidatesTable;
     }
 
-    public function showCandidate(int $numCandidate)
+    public function showCandidateFrank()
     {
-        $resultObj = $this->candidatesTable;
+        $resultObject = $this->candidatesTable;
 
-        $result = $resultObj->findAll();
+        $candidateFrank = $resultObject->getCandidateFrank();
+        $this->showInformation($candidateFrank);
+    }
+    
+    public function showCandidateClaire()
+    {
+        $resultObject = $this->candidatesTable;
 
-        $candidates = [];
-        foreach ($result as $candidate)
-        {
-            $candidates[] = [
-                'ID_CAND' => $candidate['ID_CAND'],
-                'NOM_CAND' => $candidate['NOM_CAND'],
-                'APEL_CAND' => $candidate['APEL_CAND'],
-                'PART_CAND' => $candidate['PART_CAND'],
-                'EDAD_CAND' => $candidate['EDAD_CAND'],
-                'COST_CAND' => $candidate['COST_CAND'],
-                'VOTO_CAND' => $candidate['VOTO_CAND']
-            ];
-        }
+        $candidateClaire = $resultObject->getCandidateClaire();
+        $this->showInformation($candidateClaire);
+    }
+    
+    public function showCandidateObama()
+    {
+        $resultObject = $this->candidatesTable;
 
-        echo '<p>Nombre:' . $candidates[$numCandidate]['NOM_CAND'] . '</p>';
-        echo '<p>Apellido:' . $candidates[$numCandidate]['APEL_CAND'] . '</p>';
-        echo '<p>Edad:' . $candidates[$numCandidate]['EDAD_CAND'] . '</p>';
-        echo '<p>Partido Político: <br>' . $candidates[$numCandidate]['PART_CAND'] . '</p>';
-        echo '<p>Costo Campaña:' . $candidates[$numCandidate]['COST_CAND'] . '</p>';
-        echo '<p>Número de Votos:' . $candidates[$numCandidate]['VOTO_CAND'] . '</p>';
+        $candidateObama = $resultObject->getCandidateObama();
+        $this->showInformation($candidateObama);
     }
 
+    private function showInformation($candidate)
+    {
+        echo '<p>Nombre:' . $candidate['NOM_CAND'] . '</p>';
+        echo '<p>Apellido:' . $candidate['APEL_CAND'] . '</p>';
+        echo '<p>Edad:' . $candidate['EDAD_CAND'] . '</p>';
+        echo '<p>Partido Político: <br>' . $candidate['PART_CAND'] . '</p>';
+        echo '<p>Costo Campaña:' . $candidate['COST_CAND'] . '</p>';
+        echo '<p>Número de Votos:' . $candidate['VOTO_CAND'] . '</p>';
+    }
+    
     public function showButtonAverageAndVote()
     {
         echo '<button type="button" class="button-blue">Porcetaje Votos</button>';

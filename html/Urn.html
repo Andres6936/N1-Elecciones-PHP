@@ -27,42 +27,42 @@
 
     <section id="section-candidate">
         <fieldset id="div-first-candidate">
-            <legend>Candidato 1</legend>
+            <legend>Candidate Frank</legend>
 
             <?php
 
             include_once("php/classes/Urn.php");
 
             $urn = Urn::getInstance();
-            $urn->showCandidate(0);
+            $urn->showCandidateFrank();
             $urn->showButtonAverageAndVote()
 
             ?>
 
         </fieldset>
         <fieldset id="div-second-candidate">
-            <legend>Candidato 2</legend>
+            <legend>Candidate Claire</legend>
 
             <?php
 
             include_once("php/classes/Urn.php");
 
             $urn = Urn::getInstance();
-            $urn->showCandidate(1);
+            $urn->showCandidateClaire();
             $urn->showButtonAverageAndVote()
 
             ?>
 
         </fieldset>
         <fieldset id="div-third-candidate">
-            <legend>Candidato 3</legend>
+            <legend>Candidate Obama</legend>
 
             <?php
 
             include_once("php/classes/Urn.php");
 
             $urn = Urn::getInstance();
-            $urn->showCandidate(2);
+            $urn->showCandidateObama();
             $urn->showButtonAverageAndVote()
 
             ?>
