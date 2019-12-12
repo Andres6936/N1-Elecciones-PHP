@@ -1,15 +1,18 @@
 /* Support to Fira Code Font*/
 @import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css);
 
+html
+{
+    font-family: 'Fira Code', monospace;
+    font-size: 12px;
+}
+
 section
 {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 0.5em;
-
-    font-family: 'Fira Code', monospace;
-    font-size: 12px;
 }
 
 section fieldset
