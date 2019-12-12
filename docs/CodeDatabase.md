@@ -30,7 +30,7 @@ create table Votantes
 ### Campos Candidatos
 
 ```sql
-insert into Candidatos values (1, 'Felipe', 'Pitty', 27, 'Independiente', 0, 0);
-insert into Candidatos values (2, 'Susanita', 'Chirusi', 26, 'Revolucionario', 0, 0);
-insert into Candidatos values (3, 'Monolito', 'Goreiro', 31, 'Tradicional', 0, 0);
+insert into Candidatos values (1, 'Frank', 'Underwood', 27, 'Independiente', 0, 0);
+insert into Candidatos values (2, 'Claire', 'Underwood', 26, 'Revolucionario', 0, 0);
+insert into Candidatos values (3, 'Barack', 'Obama', 31, 'Tradicional', 0, 0);
 ```
